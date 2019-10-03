@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat'),
+    url(./fonts/Montserrat/Montserrat-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-ExtraBold';
+  src: local('Montserrat'),
+    url(./fonts/Montserrat/Montserrat-ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway-Regular';
+  src: local('Raleway'),
+    url(./fonts/Raleway/Raleway-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway-Bold';
+  src: local('Raleway'),
+    url(./fonts/Raleway/Raleway-Bold.ttf) format('truetype');
+}
+
+body {
+  font-family: 'Montserrat';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+.card-title,
+.navbar {
+  font-family: 'Raleway-Bold';
+}
+
+*:focus {
+  outline: none !important;
+}
+
+section {
+  margin: 40px 0;
+}
+
+strong {
+  font-family: 'Montserrat-ExtraBold';
+}

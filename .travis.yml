@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - 'stable'
+cache:
+  directories:
+    - node_modules
+before_script:
+  - echo $TRAVIS_BRANCH
+script:
+  - yarn build
+deploy:
+  - provider: firebase
+    skip_cleanup: true
+    token:
+      secure: $FIREBASE_TOKEN
+    project: rraf-production
+    on:
+      branch: master
+      condition: $TRAVIS_BRANCH = master
+  - provider: firebase
+    skip_cleanup: true
+    token:
+      secure: $FIREBASE_TOKEN
+    project: rraf-staging
+    on:
+      branch: staging
+      condition: $TRAVIS_BRANCH = staging
