@@ -13,7 +13,7 @@ deploy:
     skip_cleanup: true
     token:
       secure: $FIREBASE_TOKEN
-    project: rraf-production
+    project: rraf-prod
     on:
       branch: master
       condition: $TRAVIS_BRANCH = master
