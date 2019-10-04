@@ -48,7 +48,7 @@ service cloud.firestore {
 
 ### b) Add the App to your Project
 
-In your project settings click on the web icon to get the projects information we'll use as environment variables in the next step.
+In each of your project settings click on the web icon to get the projects information we'll use as environment variables in the next step.
 
 ![Environment Variables](./src/img/add-app.png)
 

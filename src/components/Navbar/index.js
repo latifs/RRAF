@@ -60,7 +60,7 @@ class MainNavBar extends Component {
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                   <NavItem onClick={() => this.closeNavbar()}>
-                    <NavLink tag={RRNavLink} to="/app/spot-list">
+                    <NavLink tag={RRNavLink} to="/app/crud">
                       Firestore CRUD
                     </NavLink>
                   </NavItem>

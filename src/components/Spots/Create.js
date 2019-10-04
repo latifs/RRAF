@@ -2,17 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {createSpot} from '../../redux/spots/actions';
 
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-  Toast,
-  ToastBody,
-  ToastHeader,
-} from 'reactstrap';
+import {Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 
 const emptyState = {
   name: '',
@@ -42,21 +32,10 @@ class Add extends Component {
   }
 
   render() {
-    const {isSaving, hasError} = this.props;
+    const {isSaving} = this.props;
 
     return (
       <Form onSubmit={this.handleSubmit}>
-        {hasError ? (
-          <Toast>
-            <ToastHeader>Reactstrap</ToastHeader>
-            <ToastBody>
-              This is a toast on a white background — check it out!
-            </ToastBody>
-          </Toast>
-        ) : (
-          <div />
-        )}
-
         <FormGroup>
           <Label htmlFor="name">Name</Label>
           <Input
@@ -94,8 +73,8 @@ class Add extends Component {
 }
 
 const mapStateToProps = ({spots}) => {
-  const {isSaving, hasError} = spots;
-  return {isSaving, hasError};
+  const {isSaving} = spots;
+  return {isSaving};
 };
 
 export default connect(
