@@ -1,260 +1,61 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 
-// Reactstrap
-import {
-  Card,
-  CardText,
-  CardTitle,
-  Row,
-  Col,
-  Jumbotron,
-  Container,
-} from 'reactstrap';
+import CardHome from './CardHome';
+import IntroHome from './IntroHome';
 
-// FontAwesome
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {
-  faDatabase,
-  faSync,
-  faWarehouse,
-  faKey,
-  faPaintBrush,
-  faSortAmountDown,
-  faFont,
-  faMagic,
-  faStream,
-  faRunning,
-} from '@fortawesome/free-solid-svg-icons';
-import {faReact, faFontAwesome} from '@fortawesome/free-brands-svg-icons';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import {makeStyles} from '@material-ui/core/styles';
 
-export default function Home() {
+const useStyles = makeStyles(theme => ({
+  mainContainer: {
+    padding: theme.spacing(2),
+  },
+}));
+
+const libraries = [
+  {name: 'React', link: 'https://reactjs.org'},
+  {name: 'Redux', link: 'https://redux.js.org/'},
+  {name: 'CreateReactApp', link: 'https://create-react-app.dev'},
+  {
+    name: 'React Router 4',
+    link: 'https://github.com/ReactTraining/react-router',
+  },
+  {name: 'Material-UI', link: 'https://material-ui.com/'},
+  {
+    name: 'Firebase Hosting',
+    link: 'https://firebase.google.com/products/hosting/',
+  },
+  {
+    name: 'Firebase Auth',
+    link: 'https://firebase.google.com/products/auth/',
+  },
+  {
+    name: 'Cloud Firestore',
+    link: 'https://firebase.google.com/products/firestore/',
+  },
+  {name: 'Google Fonts', link: 'https://fonts.google.com/'},
+  {name: 'Axios', link: 'https://github.com/axios/axios'},
+  {name: 'JsonPlaceholder', link: 'https://jsonplaceholder.typicode.com/'},
+  {name: 'Travis', link: 'http://travis-ci.com'},
+];
+
+export default () => {
+  const classes = useStyles();
   return (
-    <Fragment>
-      <Jumbotron fluid>
-        <Container>
-          <h1 className="display-5">Sample create React app</h1>
-          <p className="lead">
-            This create react app is a boilerplate that aims to speed up your
-            development process when using the Google Firebase tools. <br />
-          </p>
-          <ul>
-            <li>
-              You can communicate with either a Backend API or a Cloud Firestore
-              database.
-            </li>
-            <li>
-              It comes with Firebase Authentication and React-Router protected
-              routes out of the box.
-            </li>
-            <li>
-              You could either deploy this project to Firebase Hosting using the
-              Firebase CLI or modify the included .travis.yml file for
-              continuous deployment.
-            </li>
-          </ul>
-        </Container>
-      </Jumbotron>
-      <Container>
-        <Row>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon
-                  icon={faReact}
-                  size="2x"
-                  mask={['far', 'circle']}
-                />
-              </CardText>
-              <CardTitle>React</CardTitle>
-              <a
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faMagic} size="2x" />
-              </CardText>
-              <CardTitle>Create React app</CardTitle>
-              <a
-                href="https://create-react-app.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faSortAmountDown} size="2x" />
-              </CardText>
-              <CardTitle>Redux</CardTitle>
-              <a
-                href="https://redux.js.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faWarehouse} size="2x" />
-              </CardText>
-              <CardTitle>Firebase Hosting</CardTitle>
-              <a
-                href="https://firebase.google.com/products/hosting/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faKey} size="2x" />
-              </CardText>
-              <CardTitle>Firebase Auth</CardTitle>
-              <a
-                href="https://firebase.google.com/products/auth/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faDatabase} size="2x" />
-              </CardText>
-              <CardTitle>Cloud Firestore</CardTitle>
-              <a
-                href="https://firebase.google.com/products/firestore/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faRunning} size="2x" />
-              </CardText>
-              <CardTitle>Axios</CardTitle>
-              <a
-                href="https://github.com/axios/axios"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faSync} size="2x" />
-              </CardText>
-              <CardTitle>Travis</CardTitle>
-              <a
-                href="http://travis-ci.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faStream} size="2x" />
-              </CardText>
-              <CardTitle>jsonplaceholder</CardTitle>
-              <a
-                href="https://jsonplaceholder.typicode.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faPaintBrush} size="2x" />
-              </CardText>
-              <CardTitle>ReactStrap</CardTitle>
-              <a
-                href="https://reactstrap.github.io/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faFontAwesome} size="2x" />
-              </CardText>
-              <CardTitle>React FontAwesome</CardTitle>
-              <a
-                href="https://fontawesome.com/how-to-use/on-the-web/using-with/react"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-
-          <Col sm="3">
-            <Card body className="text-center">
-              <CardText>
-                <FontAwesomeIcon icon={faFont} size="2x" />
-              </CardText>
-              <CardTitle>Google Fonts</CardTitle>
-              <a
-                href="https://jsonplaceholder.typicode.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button"
-              >
-                More
-              </a>
-            </Card>
-          </Col>
-        </Row>
+    <React.Fragment>
+      <IntroHome />
+      <Container component="section" fixed className={classes.mainContainer}>
+        <Grid container spacing={2}>
+          {libraries.map((library, key) => {
+            return (
+              <Grid item xs={12} sm={4} md={3} key={key}>
+                <CardHome name={library.name} link={library.link} />
+              </Grid>
+            );
+          })}
+        </Grid>
       </Container>
-    </Fragment>
+    </React.Fragment>
   );
-}
+};

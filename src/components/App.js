@@ -1,74 +1,81 @@
-import React, {Component, Fragment} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 
 import {Redirect, Route, Switch} from 'react-router-dom';
 
+import InitialPath from './InitialPath';
+
 // Actions
 import {verifyAuth} from './../redux/auth/actions';
 
-import Navbar from './Navbar';
 import MainRoute from '../routes';
 import LoginLayout from './Login/';
 import Error404 from './Error/';
-import FixedToast from './FixedToast';
+import SnackBar from './SnackBar/';
 
-import {Spinner} from 'reactstrap';
+// Layouts
+import Navbar from './Layouts/Navbar';
+import Footer from './Layouts/Footer';
 
-const InitialPath = ({
-  component: Component,
-  isAuthenticated,
-  isLoading,
-  ...rest
-}) => (
-  <Route
-    {...rest}
-    render={props =>
-      isLoading ? (
-        <Spinner color="secondary" type="grow" />
-      ) : isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: '/login',
-            state: {from: props.location},
-          }}
-        />
-      )
-    }
-  />
-);
+import CircularProgress from '@material-ui/core/CircularProgress';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-class App extends Component {
+import {withStyles} from '@material-ui/core/styles';
+
+const styles = theme => ({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.background.paper,
+    },
+  },
+  mainLayout: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
+  mainContent: {
+    flex: 1,
+  },
+  progress: {
+    position: 'absolute',
+    left: '50%',
+  },
+});
+
+class App extends React.Component {
   componentDidMount() {
     this.props.verifyAuth();
   }
 
   render() {
-    const {location, match, isAuthenticated, isLoading} = this.props;
+    const {location, match, isAuthenticated, isLoading, classes} = this.props;
 
     if (location.pathname === '/app' || location.pathname === '/') {
       return <Redirect to="/app/home" />;
     }
     return (
-      <Fragment>
+      <div className={classes.mainLayout}>
+        <CssBaseline />
         <Navbar />
-        <FixedToast />
-        {isLoading ? (
-          <Spinner color="secondary" type="grow" />
-        ) : (
-          <Switch>
-            <InitialPath
-              path={`${match.url}app`}
-              isAuthenticated={isAuthenticated}
-              component={MainRoute}
-            />
-            <Route path={`/login`} component={LoginLayout} />
-            <Route path={`/error`} component={Error404} />
-            <Redirect to="/error" />
-          </Switch>
-        )}
-      </Fragment>
+        <SnackBar />
+        <div className={classes.mainContent}>
+          {isLoading ? (
+            <CircularProgress className={classes.progress} />
+          ) : (
+            <Switch>
+              <InitialPath
+                path={`${match.url}app`}
+                isAuthenticated={isAuthenticated}
+                component={MainRoute}
+              />
+              <Route path={`/login`} component={LoginLayout} />
+              <Route path={`/error`} component={Error404} />
+              <Redirect to="/error" />
+            </Switch>
+          )}
+        </div>
+        <Footer />
+      </div>
     );
   }
 }
@@ -78,7 +85,9 @@ const mapStateToProps = ({authUser}) => {
   return {isAuthenticated, isLoading};
 };
 
-export default connect(
-  mapStateToProps,
-  {verifyAuth}
-)(App);
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    {verifyAuth}
+  )(App)
+);

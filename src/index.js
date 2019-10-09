@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import MainApp from './App';
 import * as serviceWorker from './serviceWorker';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import 'typeface-roboto';
 
 ReactDOM.render(<MainApp />, document.getElementById('root'));
 
