@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import App from './components/App';
 import {configureStore} from './redux/store';
 
-const MainApp = () => (
+export default () => (
   <Provider store={configureStore()}>
     <Router>
       <Switch>
@@ -14,5 +14,3 @@ const MainApp = () => (
     </Router>
   </Provider>
 );
-
-export default MainApp;

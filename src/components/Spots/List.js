@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 
 // Actions
@@ -7,9 +7,24 @@ import {fetchSpots} from '../../redux/spots/actions';
 // CMP
 import Item from './Item';
 
-import {Spinner, ListGroup} from 'reactstrap';
+import List from '@material-ui/core/List';
 
-class SpotList extends Component {
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Container from '@material-ui/core/Container';
+
+import {withStyles} from '@material-ui/core/styles';
+
+const styles = theme => ({
+  mainContainer: {
+    padding: theme.spacing(2),
+  },
+  progress: {
+    position: 'absolute',
+    left: '50%',
+  },
+});
+
+class SpotList extends React.Component {
   componentDidMount() {
     this.props.fetchSpots();
   }
@@ -21,16 +36,16 @@ class SpotList extends Component {
   }
 
   render() {
-    const {allSpots, isLoading} = this.props;
+    const {allSpots, isLoading, classes} = this.props;
 
     return (
-      <Fragment>
+      <Container component="section" fixed className={classes.mainContainer}>
         {isLoading ? (
-          <Spinner color="secondary" type="grow" />
+          <CircularProgress className={classes.progress} />
         ) : (
-          <ListGroup>{this.renderSpots(allSpots)}</ListGroup>
+          <List>{this.renderSpots(allSpots)}</List>
         )}
-      </Fragment>
+      </Container>
     );
   }
 }
@@ -40,7 +55,9 @@ const mapStateToProps = ({spots}) => {
   return {allSpots, isLoading};
 };
 
-export default connect(
-  mapStateToProps,
-  {fetchSpots}
-)(SpotList);
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    {fetchSpots}
+  )(SpotList)
+);
