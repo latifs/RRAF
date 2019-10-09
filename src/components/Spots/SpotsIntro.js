@@ -55,12 +55,26 @@ export default () => {
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <Button variant="contained" color="primary">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component={Link}
+                  href="https://firebase.google.com/products/auth/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Firebase Authentication
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" color="primary">
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  component={Link}
+                  href="https://firebase.google.com/products/firestore/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Cloud Firestore
                 </Button>
               </Grid>
@@ -72,7 +86,7 @@ export default () => {
       <Container component="section" fixed className={classes.mainContainer}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={6}>
-            <Card body>
+            <Card>
               <CardContent>
                 <Typography component="h2" variant="h4" gutterBottom>
                   Firebase Auth
@@ -99,7 +113,7 @@ export default () => {
             </Card>
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
-            <Card body>
+            <Card>
               <CardContent>
                 <Typography component="h2" variant="h4" gutterBottom>
                   Cloud Firestore

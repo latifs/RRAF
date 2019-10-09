@@ -41,7 +41,7 @@ const Item = props => {
           <IconButton
             edge="end"
             aria-label="delete"
-            onClick={() => this.props.deleteSpot(spot.id)}
+            onClick={() => props.deleteSpot(spot.id)}
           >
             <DeleteIcon />
           </IconButton>
